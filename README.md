@@ -1,1 +1,5 @@
-# Programaci-n-II---TP
+# Programación-II---TP
+
+Trabajos Practicos Programación II
+
+Autor: Maximiliano Rao
