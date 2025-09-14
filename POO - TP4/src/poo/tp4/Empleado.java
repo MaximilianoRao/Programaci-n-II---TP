@@ -26,7 +26,7 @@ public class Empleado {
      * @param salario 
      */
     public Empleado(int id, String nombre, String puesto, double salario) {
-        this.id = id;
+        id = id;
         this.nombre = nombre;
         this.puesto = puesto;
         this.salario = salario;
