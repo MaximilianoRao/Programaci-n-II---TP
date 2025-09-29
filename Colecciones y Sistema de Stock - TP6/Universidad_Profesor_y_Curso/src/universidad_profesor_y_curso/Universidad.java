@@ -22,14 +22,14 @@ public class Universidad {
     }
     
     public void agregarProfesor(Profesor p) {
-        if (!profesores.contains(p)) {
+        if (p != null && !profesores.contains(p)) {
             profesores.add(p);
             System.out.println("Profesor agregado: " + p.getNombre());
         }
     }
     
     public void agregarCurso(Curso c) {
-        if (!cursos.contains(c)) {
+        if (c != null && !cursos.contains(c)) {
             cursos.add(c);
             System.out.println("Curso agregado: " + c.getNombre());
         }
@@ -60,7 +60,6 @@ public class Universidad {
         }
         for (Profesor p : profesores) {
             p.mostrarInfo();
-            p.listarCursos();
             System.out.println("---");
         }
     }
@@ -95,37 +94,26 @@ public class Universidad {
     }
     
     
-    public void eliminarCurso(String codigo) {
-        Curso curso = buscarCursoPorCodigo(codigo);
-        if (curso == null) {
-            System.out.println("Curso " + codigo + " no encontrado.");
-            return;
+    public void eliminarCurso(Curso curso) {
+         if (curso != null && cursos.contains(curso)) {
+            curso.setProfesor(null);
+            cursos.remove(curso);
+            System.out.println("Curso eliminado: " + curso.getNombre());
         }
         
-        // Romper la relación con el profesor si la hay
-        if (curso.getProfesor() != null) {
-            curso.getProfesor().eliminarCurso(curso);
-        }
-        
-        cursos.remove(curso);
-        System.out.println("Curso eliminado: " + curso.getNombre());
     }
     
-     public void eliminarProfesor(String id) {
-        Profesor profesor = buscarProfesorPorId(id);
-        if (profesor == null) {
-            System.out.println("Profesor " + id + " no encontrado.");
-            return;
+     public void eliminarProfesor(Profesor profesor) {
+        
+        if (profesor != null && profesores.contains(profesor)) {
+           
+            for (Curso curso : new ArrayList<>(profesor.getCursos())) {
+                curso.setProfesor(null);
+            }
+            profesores.remove(profesor);
+            System.out.println("Profesor eliminado: " + profesor.getNombre());
         }
         
-        // Dejar en null los cursos que dictaba
-        List<Curso> cursosDelProfesor = new ArrayList<>(profesor.getCursos());
-        for (Curso c : cursosDelProfesor) {
-            c.setProfesor(null);
-        }
-        
-        profesores.remove(profesor);
-        System.out.println("Profesor eliminado: " + profesor.getNombre());
     }
     
     public void mostrarReporteCursosPorProfesor() {

@@ -61,13 +61,13 @@ public class Principal {
         
         // TAREA 6: Remover un curso
         System.out.println("\nTAREA 6: ELIMINAR CURSO");
-        universidad.eliminarCurso("DB201");
+        universidad.eliminarCurso(curso3);
         System.out.println("\nVerificando que se eliminó de la lista del profesor:");
         universidad.listarProfesores();
         
         // TAREA 7: Remover un profesor
         System.out.println("\nTAREA 7: ELIMINAR PROFESOR");
-        universidad.eliminarProfesor("P003");
+        universidad.eliminarProfesor(prof3);
         System.out.println("\nVerificando que el curso quedó sin profesor:");
         universidad.listarCursos();
         

@@ -26,9 +26,7 @@ public class Profesor {
     
     // Sincroniza ambos lados
     public void agregarCurso(Curso c) {
-        if (c == null) return;
-        
-        if (!cursos.contains(c)) {
+        if (c != null && !cursos.contains(c))  {
             cursos.add(c);
             // Sincronizar el lado del curso
             if (c.getProfesor() != this) {
@@ -39,10 +37,11 @@ public class Profesor {
     
     //Sincroniza ambos lados
     public void eliminarCurso(Curso c) {
-       if (c == null) return;
+       if (c != null && cursos.contains(c)){
        cursos.remove(c);
        if (c.getProfesor() == this) {
             c.setProfesor(null);
+       }
        }
     }
     
