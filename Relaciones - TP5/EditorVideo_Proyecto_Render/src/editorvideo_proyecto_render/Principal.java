@@ -1,6 +1,8 @@
 
 package editorvideo_proyecto_render;
 
+
+
 /**
  *
  * @author Maximiliano Rao
@@ -26,6 +28,7 @@ public class Principal {
         editor.exportar("MP4", proyecto1);
         System.out.println("\n");
         editor.exportar("AVI", proyecto2);
+        
     }
 
 }
